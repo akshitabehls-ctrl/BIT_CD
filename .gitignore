@@ -1,0 +1,24 @@
+# Ignore the Dataset folders (Too big)
+LEVIR-CD/
+LEVIR-CD-256/
+LEVIR-CD-HUGE/
+
+# Ignore Zip files
+*.zip
+
+# Ignore Model Checkpoints (Too big)
+checkpoints/
+*.pth
+
+# Ignore Python junk
+__pycache__/
+*.pyc
+
+# Ignore Output images (Optional, keep if you want to show them)
+# outputs/
+
+# Ignore System files
+.DS_Store
+.vscode/
+.idea/
+.venv/

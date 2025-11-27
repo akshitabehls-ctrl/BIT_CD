@@ -1,0 +1,40 @@
+nohup: ignoring input
+/home/23ucs622/miniconda3/envs/bit_env/lib/python3.9/site-packages/torch/nn/modules/transformer.py:385: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference performance)
+  warnings.warn(
+Device: cuda
+Train samples: 7120, Val samples: 1024
+✅ Loaded pretrained ResNet18 backbone
+🚀 Starting training...
+Ep 001 | TrLoss 0.6259 | ValLoss 0.5011 | IoU 0.4093 | F1 0.5808 | Preds: [0 1]
+✅ Saved best model
+Ep 002 | TrLoss 0.4810 | ValLoss 0.4822 | IoU 0.4574 | F1 0.6277 | Preds: [0 1]
+✅ Saved best model
+Ep 003 | TrLoss 0.4713 | ValLoss 0.4379 | IoU 0.5137 | F1 0.6788 | Preds: [0 1]
+✅ Saved best model
+Ep 004 | TrLoss 0.5069 | ValLoss 0.4358 | IoU 0.4488 | F1 0.6196 | Preds: [0 1]
+✅ Saved best model
+Ep 005 | TrLoss 0.4818 | ValLoss 0.4482 | IoU 0.4308 | F1 0.6022 | Preds: [0 1]
+Ep 006 | TrLoss 0.4871 | ValLoss 0.3925 | IoU 0.5102 | F1 0.6756 | Preds: [0 1]
+✅ Saved best model
+Ep 007 | TrLoss 0.4661 | ValLoss 0.4498 | IoU 0.4644 | F1 0.6343 | Preds: [0 1]
+Ep 008 | TrLoss 0.4291 | ValLoss 0.3861 | IoU 0.5151 | F1 0.6800 | Preds: [0 1]
+✅ Saved best model
+Ep 009 | TrLoss 0.4414 | ValLoss 0.4995 | IoU 0.4168 | F1 0.5884 | Preds: [0 1]
+Ep 010 | TrLoss 0.4782 | ValLoss 0.5314 | IoU 0.4350 | F1 0.6063 | Preds: [0 1]
+Ep 011 | TrLoss 0.4766 | ValLoss 0.4491 | IoU 0.5247 | F1 0.6882 | Preds: [0 1]
+Ep 012 | TrLoss 0.5169 | ValLoss 0.4469 | IoU 0.4438 | F1 0.6147 | Preds: [0 1]
+Ep 013 | TrLoss 0.4878 | ValLoss 0.4677 | IoU 0.4294 | F1 0.6008 | Preds: [0 1]
+Ep 014 | TrLoss 0.4785 | ValLoss 0.4582 | IoU 0.4366 | F1 0.6078 | Preds: [0 1]
+Ep 015 | TrLoss 0.4682 | ValLoss 0.4879 | IoU 0.4473 | F1 0.6181 | Preds: [0 1]
+Ep 016 | TrLoss 0.4726 | ValLoss 0.4233 | IoU 0.4755 | F1 0.6445 | Preds: [0 1]
+Ep 017 | TrLoss 0.4574 | ValLoss 0.4394 | IoU 0.4773 | F1 0.6462 | Preds: [0 1]
+Ep 018 | TrLoss 0.4587 | ValLoss 0.4291 | IoU 0.4583 | F1 0.6285 | Preds: [0 1]
+Ep 019 | TrLoss 0.5037 | ValLoss 0.4715 | IoU 0.4411 | F1 0.6121 | Preds: [0 1]
+Ep 020 | TrLoss 0.4686 | ValLoss 0.4542 | IoU 0.4514 | F1 0.6220 | Preds: [0 1]
+Ep 021 | TrLoss 0.4509 | ValLoss 0.4469 | IoU 0.4400 | F1 0.6111 | Preds: [0 1]
+Ep 022 | TrLoss 0.4430 | ValLoss 0.4190 | IoU 0.4868 | F1 0.6548 | Preds: [0 1]
+Ep 023 | TrLoss 0.4371 | ValLoss 0.4361 | IoU 0.4558 | F1 0.6262 | Preds: [0 1]
+⏹ Early stopping triggered.
+: [0 1]
+Ep 025 | TrLoss 0.4907 | ValLoss 0.5324 | IoU 0.3851 | F1 0.5560 | Preds: [0 1]
+⏹ Early stopping triggered.

@@ -1,0 +1,56 @@
+nohup: ignoring input
+/home/23ucs622/miniconda3/envs/bit_env/lib/python3.9/site-packages/torch/nn/modules/transformer.py:385: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference performance)
+  warnings.warn(
+Device: cuda
+Train samples: 7120, Val samples: 1024
+✅ Loaded pretrained ResNet50 backbone (Multi-Output)
+🚀 Starting training...
+Ep 001 | TrLoss 1.0645 | ValLoss 0.8901 | IoU 0.6152 | F1 0.7618 | Preds: [0 1]
+✅ Saved best model
+Ep 002 | TrLoss 0.8745 | ValLoss 0.8337 | IoU 0.6323 | F1 0.7748 | Preds: [0 1]
+✅ Saved best model
+Ep 003 | TrLoss 0.8202 | ValLoss 0.8112 | IoU 0.6230 | F1 0.7677 | Preds: [0 1]
+✅ Saved best model
+Ep 004 | TrLoss 0.7949 | ValLoss 0.7872 | IoU 0.6502 | F1 0.7880 | Preds: [0 1]
+✅ Saved best model
+Ep 005 | TrLoss 0.7800 | ValLoss 0.7819 | IoU 0.6805 | F1 0.8099 | Preds: [0 1]
+✅ Saved best model
+Ep 006 | TrLoss 0.7725 | ValLoss 0.7684 | IoU 0.6439 | F1 0.7834 | Preds: [0 1]
+✅ Saved best model
+Ep 007 | TrLoss 0.6590 | ValLoss 0.3955 | IoU 0.5211 | F1 0.6851 | Preds: [0 1]
+✅ Saved best model
+Ep 008 | TrLoss 0.5342 | ValLoss 0.3951 | IoU 0.5365 | F1 0.6983 | Preds: [0 1]
+✅ Saved best model
+Ep 009 | TrLoss 0.4889 | ValLoss 0.3782 | IoU 0.5329 | F1 0.6953 | Preds: [0 1]
+✅ Saved best model
+Ep 010 | TrLoss 0.5160 | ValLoss 0.4137 | IoU 0.5466 | F1 0.7068 | Preds: [0 1]
+Ep 011 | TrLoss 0.4846 | ValLoss 0.4493 | IoU 0.5600 | F1 0.7179 | Preds: [0 1]
+Ep 012 | TrLoss 0.5783 | ValLoss 0.5587 | IoU 0.4809 | F1 0.6495 | Preds: [0 1]
+Ep 013 | TrLoss 0.5563 | ValLoss 0.4563 | IoU 0.5347 | F1 0.6968 | Preds: [0 1]
+Ep 014 | TrLoss 0.5365 | ValLoss 0.4457 | IoU 0.5397 | F1 0.7011 | Preds: [0 1]
+Ep 015 | TrLoss 0.5267 | ValLoss 0.4283 | IoU 0.5504 | F1 0.7100 | Preds: [0 1]
+Ep 016 | TrLoss 0.5231 | ValLoss 0.4839 | IoU 0.5161 | F1 0.6808 | Preds: [0 1]
+Ep 017 | TrLoss 0.5110 | ValLoss 0.4206 | IoU 0.5485 | F1 0.7084 | Preds: [0 1]
+Ep 018 | TrLoss 0.5109 | ValLoss 0.4941 | IoU 0.4605 | F1 0.6306 | Preds: [0 1]
+Ep 019 | TrLoss 0.5098 | ValLoss 0.4454 | IoU 0.5471 | F1 0.7073 | Preds: [0 1]
+Ep 020 | TrLoss 0.5152 | ValLoss 0.4341 | IoU 0.5643 | F1 0.7215 | Preds: [0 1]
+Ep 021 | TrLoss 0.5113 | ValLoss 0.4340 | IoU 0.5744 | F1 0.7297 | Preds: [0 1]
+Ep 022 | TrLoss 0.5256 | ValLoss 0.4530 | IoU 0.5395 | F1 0.7009 | Preds: [0 1]
+Ep 023 | TrLoss 0.5160 | ValLoss 0.4428 | IoU 0.5252 | F1 0.6887 | Preds: [0 1]
+Ep 024 | TrLoss 0.5086 | ValLoss 0.9363 | IoU 0.3784 | F1 0.5490 | Preds: [0 1]
+Ep 025 | TrLoss 0.5082 | ValLoss 0.4487 | IoU 0.5425 | F1 0.7034 | Preds: [0 1]
+Ep 026 | TrLoss 0.5098 | ValLoss 0.4669 | IoU 0.5308 | F1 0.6935 | Preds: [0 1]
+Ep 027 | TrLoss 0.5001 | ValLoss 0.4314 | IoU 0.5600 | F1 0.7179 | Preds: [0 1]
+Ep 028 | TrLoss 0.4988 | ValLoss 0.4311 | IoU 0.5544 | F1 0.7134 | Preds: [0 1]
+Ep 029 | TrLoss 0.4912 | ValLoss 0.4324 | IoU 0.5574 | F1 0.7158 | Preds: [0 1]
+Ep 030 | TrLoss 0.4906 | ValLoss 0.4441 | IoU 0.5494 | F1 0.7091 | Preds: [0 1]
+Ep 031 | TrLoss 0.4931 | ValLoss 0.4564 | IoU 0.5440 | F1 0.7046 | Preds: [0 1]
+Ep 032 | TrLoss 0.4930 | ValLoss 0.4265 | IoU 0.5643 | F1 0.7214 | Preds: [0 1]
+Ep 033 | TrLoss 0.4883 | ValLoss 0.4340 | IoU 0.5504 | F1 0.7100 | Preds: [0 1]
+Ep 034 | TrLoss 0.4893 | ValLoss 0.4377 | IoU 0.5668 | F1 0.7235 | Preds: [0 1]
+Ep 035 | TrLoss 0.4811 | ValLoss 0.4610 | IoU 0.5209 | F1 0.6850 | Preds: [0 1]
+Ep 036 | TrLoss 0.4944 | ValLoss 0.4586 | IoU 0.5405 | F1 0.7017 | Preds: [0 1]
+Ep 037 | TrLoss 0.5048 | ValLoss 0.4380 | IoU 0.5539 | F1 0.7129 | Preds: [0 1]
+Ep 038 | TrLoss 0.5049 | ValLoss 0.4358 | IoU 0.5359 | F1 0.6978 | Preds: [0 1]
+Ep 039 | TrLoss 0.5005 | ValLoss 0.4497 | IoU 0.5190 | F1 0.6833 | Preds: [0 1]
+⏹ Early stopping triggered.
