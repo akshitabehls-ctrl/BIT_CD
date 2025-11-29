@@ -1,27 +1,33 @@
 # **BIT-CD: Bitemporal Image Transformer for Change Detection**
 
-This repository implements **BIT-CD**, a hybrid deep learning framework for detecting structural changes between pairs of high-resolution remote sensing images. The model integrates **CNN-based spatial representation learning** with **Transformer-based temporal reasoning**, supported by a difference-aware fusion mechanism.
+This repository implements **BIT-CD**, a deep learning architecture designed for structural change detection in high-resolution remote sensing imagery. The approach combines convolutional and transformer-based representations with a difference-aware fusion mechanism to enhance temporal feature alignment.
 
 ---
 
 ## **Abstract**
 
-Change detection in high-resolution remote sensing imagery is essential for applications such as urban development monitoring, disaster assessment, and land-use analysis.
-BIT-CD combines a **ResNet50 backbone**, a **Bitemporal Image Transformer (BIT)**, and a **UNet-style decoder** with **Difference-Aware Feature Fusion** to better capture structural changes while suppressing pseudo-changes caused by illumination and seasonal variations.
-Evaluated on the LEVIR-CD dataset, the model achieves:
+Change detection in remote sensing imagery is critical for applications such as urban expansion monitoring, disaster assessment, and infrastructure analysis.
+BIT-CD integrates:
+
+* a **ResNet50** feature extractor,
+* a **Bitemporal Image Transformer (BIT)** for temporal context modeling, and
+* a **UNet-style decoder** enhanced with **Difference-Aware Feature Fusion**.
+
+This design improves robustness against pseudo-changes caused by illumination and seasonal variations.
+On the LEVIR-CD dataset, BIT-CD achieves:
 
 * **IoU:** 77.62%
 * **F1-Score:** 87.40%
 
 ---
 
-## **Architecture**
+## **Architecture Overview**
 
-BIT-CD consists of three core components:
+BIT-CD consists of three main components:
 
 ### **1. Spatial Feature Encoder (ResNet50)**
 
-Extracts multi-scale spatial features from both temporal images:
+Extracts multi-scale spatial features from both temporal images at the following stages:
 
 * ( F_{C2} )
 * ( F_{C3} )
@@ -29,15 +35,17 @@ Extracts multi-scale spatial features from both temporal images:
 
 ### **2. Bitemporal Image Transformer (BIT)**
 
-Captures long-range temporal dependencies and aligns context between image pairs.
+Captures long-range temporal relationships and aligns contextual information between the two temporal inputs.
 
 ### **3. UNet-Style Decoder with Difference-Aware Skip Connections**
 
-Integrates absolute feature differences
+Skip connections incorporate absolute feature differences:
+
 [
-|F_A - F_B|
+\left| F_A - F_B \right|
 ]
-into the decoder pathway to highlight real changes and suppress unchanged areas.
+
+This emphasizes genuine structural changes while reducing the influence of unchanged regions or illumination variations.
 
 ---
 
@@ -50,7 +58,7 @@ git clone https://github.com/yourusername/BIT_CD_Project.git
 cd BIT_CD_Project
 ```
 
-Install dependencies:
+Install required dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -60,42 +68,39 @@ pip install -r requirements.txt
 
 ## **Dataset Preparation**
 
-This project uses the **LEVIR-CD** dataset with 256×256 patching.
+This project uses the **LEVIR-CD** dataset. Images must be cropped into 256×256 patches for training.
 
-Steps:
-
-1. Download the LEVIR-CD dataset.
-2. Generate patches using:
+To generate patches:
 
 ```bash
 python prepare_data.py
 ```
 
-This converts 1024×1024 image tiles into 256×256 training and validation patches.
+The script processes 1024×1024 images into training and validation tiles.
 
 ---
 
 ## **Training**
 
-Train the model with:
+Train the BIT-CD model using:
 
 ```bash
 python train.py --epochs 200 --bs 16 --lr 5e-5
 ```
 
-Checkpoints and logs will be stored automatically.
+All checkpoints and logs are stored in the `checkpoints/` and corresponding log files.
 
 ---
 
 ## **Inference**
 
-Run inference on sample image pairs:
+Run inference on test samples:
 
 ```bash
 python predict.py --model_path checkpoints/best_bit.pth --num_samples 20
 ```
 
-Output masks will be saved in:
+Predictions are saved in:
 
 ```
 outputs_final/
@@ -120,6 +125,7 @@ outputs_final/
 BIT_CD/
 │── checkpoints/
 │── outputs_final/
+│── dataset/
 │── src/
 │── train.py
 │── predict.py
@@ -132,4 +138,4 @@ BIT_CD/
 
 ## **License**
 
-This repository is released under the **MIT License**.
+This project is released under the **MIT License**.
