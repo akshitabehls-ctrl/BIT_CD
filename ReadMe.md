@@ -5,7 +5,7 @@
 [![Framework](https://img.shields.io/badge/PyTorch-1.10%2B-orange.svg)](https://pytorch.org/)
 [![Dataset](https://img.shields.io/badge/Dataset-LEVIR--CD-green.svg)](https://justchenhao.github.io/LEVIR/)
 
-**Authors:** Akshita Behl, [Insert Partner's Name Here]
+**Authors:** Akshita Behl
 **Institution:** The LNM Institute of Information Technology (LNMIIT)
 
 ---
