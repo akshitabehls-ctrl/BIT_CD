@@ -1,66 +1,92 @@
-# **BIT-CD: Bitemporal Image Transformer for Change Detection**
+Alright Akshita — say no more.
+You don’t want “boring corporate README”,
+you don’t want “emoji kiddie README”,
+you don’t want “messy markdown shapes”.
 
-This repository implements **BIT-CD**, a deep learning architecture designed for structural change detection in high-resolution remote sensing imagery. The approach combines convolutional and transformer-based representations with a difference-aware fusion mechanism to enhance temporal feature alignment.
+You want something that looks like a **clean research repo** on GitHub — the kind of README used by top CVPR/NeurIPS/ICCV papers.
+
+**Sharp. Minimal. Academic. High-end. “Cool” in a researcher way.**
+
+I got you.
+I’ll give you a **professional, modern, research-grade README** with:
+
+* perfectly aligned typography
+* proper LaTeX equations
+* clean sections
+* no bullet mess
+* no weird formatting
+* a title block like real papers
+* optional “BibTeX citation” section
+* optional architecture diagram placeholder
+* consistent spacing that looks great in GitHub’s renderer
+
+Let's go.
+
+---
+
+# ✅ **Your New Research-Style README (Clean, Modern, Professional)**
+
+**BIT-CD: Bitemporal Image Transformer for Change Detection**
+*A Hybrid CNN–Transformer Framework for Structural Change Detection in Remote Sensing Imagery*
+
+---
+
+## **Overview**
+
+BIT-CD is a deep learning framework designed to detect structural changes between bitemporal high-resolution satellite images. The method integrates **multi-scale convolutional features**, **transformer-based temporal modeling**, and a **difference-aware decoding mechanism**, achieving strong performance on the LEVIR-CD benchmark.
 
 ---
 
 ## **Abstract**
 
-Change detection in remote sensing imagery is critical for applications such as urban expansion monitoring, disaster assessment, and infrastructure analysis.
-BIT-CD integrates:
+Change detection from satellite imagery is crucial for urban development monitoring, disaster damage assessment, and land-use analysis.
+This work presents **BIT-CD**, a hybrid architecture that combines:
 
-* a **ResNet50** feature extractor,
-* a **Bitemporal Image Transformer (BIT)** for temporal context modeling, and
-* a **UNet-style decoder** enhanced with **Difference-Aware Feature Fusion**.
+* a **ResNet50 encoder** for spatial feature extraction,
+* a **Bitemporal Image Transformer (BIT)** for temporal context alignment, and
+* a **UNet-style decoder** augmented with **Difference-Aware Skip Connections**.
 
-This design improves robustness against pseudo-changes caused by illumination and seasonal variations.
-On the LEVIR-CD dataset, BIT-CD achieves:
+The difference-aware mechanism integrates absolute feature differences
+[
+D = \lvert F_A - F_B \rvert
+]
+directly into the decoding path, improving robustness against pseudo-changes caused by lighting, seasonal variations, or sensor noise.
+
+On the **LEVIR-CD** dataset, BIT-CD achieves:
 
 * **IoU:** 77.62%
 * **F1-Score:** 87.40%
 
 ---
 
-## **Architecture Overview**
+## **Architecture**
 
-BIT-CD consists of three main components:
+### **1. Encoder — ResNet50 (Pretrained)**
 
-### **1. Spatial Feature Encoder (ResNet50)**
-
-Extracts multi-scale spatial features from both temporal images at the following stages:
-
-* ( F_{C2} )
-* ( F_{C3} )
-* ( F_{C4} )
+Extracts multi-scale spatial features from both temporal images:
+[
+F_{C2},; F_{C3},; F_{C4}
+]
 
 ### **2. Bitemporal Image Transformer (BIT)**
 
-Captures long-range temporal relationships and aligns contextual information between the two temporal inputs.
+Models long-range temporal interactions and aligns spatial semantics between the two time steps.
 
-### **3. UNet-Style Decoder with Difference-Aware Skip Connections**
+### **3. Decoder — UNet-Style with Difference-Aware Fusion**
 
-Skip connections incorporate absolute feature differences:
-
+Skip connections incorporate the absolute temporal difference map
 [
-\left| F_A - F_B \right|
+D = \lvert F_A - F_B \rvert
 ]
-
-This emphasizes genuine structural changes while reducing the influence of unchanged regions or illumination variations.
+enabling the decoder to emphasize actual structural changes while suppressing unchanged regions.
 
 ---
 
 ## **Installation**
 
-Clone the repository:
-
 ```bash
 git clone https://github.com/yourusername/BIT_CD_Project.git
 cd BIT_CD_Project
-```
-
-Install required dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
@@ -68,39 +94,32 @@ pip install -r requirements.txt
 
 ## **Dataset Preparation**
 
-This project uses the **LEVIR-CD** dataset. Images must be cropped into 256×256 patches for training.
-
-To generate patches:
+This project uses **LEVIR-CD**.
+Crop the original 1024×1024 tiles into 256×256 patches using:
 
 ```bash
 python prepare_data.py
 ```
 
-The script processes 1024×1024 images into training and validation tiles.
-
 ---
 
 ## **Training**
-
-Train the BIT-CD model using:
 
 ```bash
 python train.py --epochs 200 --bs 16 --lr 5e-5
 ```
 
-All checkpoints and logs are stored in the `checkpoints/` and corresponding log files.
+Checkpoints are automatically saved.
 
 ---
 
 ## **Inference**
 
-Run inference on test samples:
-
 ```bash
-python predict.py --model_path checkpoints/best_bit.pth --num_samples 20
+python predict.py --model_path checkpoints/best_bit.pth
 ```
 
-Predictions are saved in:
+Output masks will be stored in:
 
 ```
 outputs_final/
@@ -119,14 +138,13 @@ outputs_final/
 
 ---
 
-## **Project Structure**
+## **Repository Structure**
 
 ```
 BIT_CD/
 │── checkpoints/
 │── outputs_final/
 │── dataset/
-│── src/
 │── train.py
 │── predict.py
 │── prepare_data.py
@@ -136,6 +154,48 @@ BIT_CD/
 
 ---
 
-## **License**
+## **Citation**
 
-This project is released under the **MIT License**.
+If you use this repository, please cite it as:
+
+```
+@misc{bit_cd,
+  title  = {BIT-CD: Bitemporal Image Transformer for Change Detection},
+  author = {Akshita Behl},
+  year   = {2025},
+  url    = {https://github.com/yourusername/BIT_CD_Project}
+}
+```
+
+---
+
+## **Notes**
+
+* The architecture is modular and supports alternative backbones or transformer blocks.
+* The difference-aware fusion mechanism can be applied to other bitemporal or multimodal tasks.
+
+---
+
+# ⭐ If you want it EVEN cooler…
+
+I can add:
+
+### **Optional Upgrades**
+
+* A **diagram** of your architecture (clean vector-style)
+* A **model summary table** with FLOPs + Params
+* A **"Motivation" section** like real papers
+* A **"Qualitative Results" gallery**
+* A **top banner header** like PyTorch repos
+* A **full academic layout** like OpenMMLab / FAIR / Google Research repos
+
+Just tell me:
+
+**Do you want the README to look like a:**
+
+1. CVPR research repo
+2. Industry production repo
+3. Minimal academic repo
+4. LLM-style clean documentation repo
+
+Whatever vibe you're going for, I’ll style it to perfection.
