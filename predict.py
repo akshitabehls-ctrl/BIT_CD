@@ -27,14 +27,11 @@ def refine_mask(mask):
     mask = (mask * 255).astype(np.uint8)
     
     # 1. Morphological Cleanup (Removes noise)
-    # This is safe and recommended
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
     mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
     
     # 2. Polygon Approximation (Squaring)
-    # I have left this UNCOMMENTED for you because you wanted it.
-    # It makes buildings look squarer.
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     refined_mask = np.zeros_like(mask)
     for cnt in contours:

@@ -34,16 +34,14 @@ class LevirCdDataset(Dataset):
 
     def transform(self, img_a, img_b, mask):
         #Applies complex augmentations for training,but only resizing/normalization for validation.
-        # 1. Resize (Always)
+        # 1. Resize
         img_a = TF.resize(img_a, (self.img_size, self.img_size), interpolation=Image.BICUBIC)
         img_b = TF.resize(img_b, (self.img_size, self.img_size), interpolation=Image.BICUBIC)
         mask  = TF.resize(mask,  (self.img_size, self.img_size), interpolation=Image.NEAREST)
 
-        # 2. Augmentations (ONLY for Training)
+        #Augmentations ,ONLY for Training
         if self.split == "train":
-            
-            # --- A. Geometric (Must be consistent across A, B, Mask) ---
-            
+            #Geometric Must be consistent across A, B, Mask
             # Random Horizontal Flip
             if random.random() > 0.5:
                 img_a = TF.hflip(img_a)
@@ -63,22 +61,18 @@ class LevirCdDataset(Dataset):
                 img_b = TF.rotate(img_b, angle)
                 mask  = TF.rotate(mask,  angle)
 
-            # --- B. Photometric (Independent for A and B) ---
-            # This solves the "Day/Night" and "Complex Env" issues
-            
-            # Define the color jitter transform (Brightness, Contrast, Saturation, Hue)
+            #Photometric ,independent for A and B
+            # randomly modifies Brightness, Contrast, Saturation, Hue
             color_jitter = T.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05)
             
             # Apply randomly to A
             if random.random() > 0.2:
                 img_a = color_jitter(img_a)
             
-            # Apply randomly to B (Independent of A!)
+            # Apply randomly to B (Independent of A)
             if random.random() > 0.2:
                 img_b = color_jitter(img_b)
 
-            # --- C. Blur & Noise (The Professor's "Deblur/Noise" Note) ---
-            
             # Gaussian Blur (Randomly apply to A or B)
             if random.random() > 0.3:
                 sigma = random.uniform(0.1, 2.0)

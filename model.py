@@ -11,7 +11,7 @@ class FeatureExtractor(nn.Module):
         super().__init__()
         # Load the base model
         resnet = models.resnet50(weights=models.ResNet50_Weights.DEFAULT if pretrained else None)
-        print("✅ Loaded pretrained ResNet50 backbone (Multi-Output)")
+        print("Loaded pretrained ResNet50 backbone")
 
         self.conv1 = resnet.conv1
         self.bn1 = resnet.bn1
@@ -97,7 +97,7 @@ class UNetDecoder(nn.Module):
         self.proj_t = conv_block(t_in, 512)
         
         # Fusion 1: Transformer Out (1/16) -> Upsample -> Fuse with C3 (1/8)
-        # Note: We are skipping explicit fusion with C4 because t_out IS the processed C4
+        # skipping explicit fusion with C4 because t_out IS the processed C4
         self.up_c3 = nn.Upsample(scale_factor=2, mode='nearest') 
         self.conv_c3 = conv_block(512 + f_c3, 256) 
 

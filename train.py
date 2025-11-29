@@ -34,7 +34,7 @@ def dice_loss_from_logits(logits, targets, smooth=1.0):
 
     inter = (probs * targets_f).sum(dim=(1,2))
     union = probs.sum(dim=(1,2)) + targets_f.sum(dim=(1,2))
-    dice = (2. * inter + smooth) / (union + smooth)
+    dice = (2. * inter + smooth) / (union + smooth) #prevents division by zero
     return 1.0 - dice.mean()
 
 
@@ -54,8 +54,7 @@ def train_main(args):
 
     model = SimplifiedBIT(num_classes=2).to(device)
 
-    # CHANGED: Removed aggressive manual class weights.
-    # We rely on Dice Loss + standard CE to balance training.
+    #Dice Loss + standard CE to balance training.
     ce_loss = nn.CrossEntropyLoss() 
 
     opt = optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.wd)
@@ -95,9 +94,9 @@ def train_main(args):
             loss.backward()
             opt.step()
 
-            tr_loss += loss.item()
+            tr_loss += loss.item() #sum of losses
 
-        tr_loss /= len(train_dl)
+        tr_loss /= len(train_dl) #avg loss
 
         # ----- Validation -----
         model.eval()
