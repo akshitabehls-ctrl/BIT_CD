@@ -1,81 +1,135 @@
-BIT-CD: Bitemporal Image Transformer for Change Detection
+# **BIT-CD: Bitemporal Image Transformer for Change Detection**
 
-📌 Abstract
+This repository implements **BIT-CD**, a hybrid deep learning framework for detecting structural changes between pairs of high-resolution remote sensing images. The model integrates **CNN-based spatial representation learning** with **Transformer-based temporal reasoning**, supported by a difference-aware fusion mechanism.
 
-Change detection in high-resolution remote sensing imagery is a critical task for urban planning and disaster monitoring. This project implements a hybrid deep learning architecture combining a ResNet50 backbone with a Bitemporal Image Transformer (BIT) and a UNet-style decoder. We introduce a novel Difference-Aware Feature Fusion mechanism to suppress pseudo-changes caused by seasonal variations and lighting differences. Evaluated on the LEVIR-CD dataset, our method achieves an Intersection over Union (IoU) of 77.62% and an F1-Score of 87.40%.
+---
 
-🧠 Architecture
+## **Abstract**
 
-The model utilizes a hybrid CNN-Transformer architecture:
+Change detection in high-resolution remote sensing imagery is essential for applications such as urban development monitoring, disaster assessment, and land-use analysis.
+BIT-CD combines a **ResNet50 backbone**, a **Bitemporal Image Transformer (BIT)**, and a **UNet-style decoder** with **Difference-Aware Feature Fusion** to better capture structural changes while suppressing pseudo-changes caused by illumination and seasonal variations.
+Evaluated on the LEVIR-CD dataset, the model achieves:
 
-Backbone: ResNet50 (Pretrained) extracting multi-scale features ($F_{C2}, F_{C3}, F_{C4}$).
+* **IoU:** 77.62%
+* **F1-Score:** 87.40%
 
-Context: Bitemporal Image Transformer (BIT) to model global context.
+---
 
-Decoder: Custom UNet-style decoder with Absolute Difference Skip Connections ($|F_A - F_B|$) to suppress unchanged features.
+## **Architecture**
 
-🛠️ Installation & Setup
+BIT-CD consists of three core components:
+
+### **1. Spatial Feature Encoder (ResNet50)**
+
+Extracts multi-scale spatial features from both temporal images:
+
+* ( F_{C2} )
+* ( F_{C3} )
+* ( F_{C4} )
+
+### **2. Bitemporal Image Transformer (BIT)**
+
+Captures long-range temporal dependencies and aligns context between image pairs.
+
+### **3. UNet-Style Decoder with Difference-Aware Skip Connections**
+
+Integrates absolute feature differences
+[
+|F_A - F_B|
+]
+into the decoder pathway to highlight real changes and suppress unchanged areas.
+
+---
+
+## **Installation**
 
 Clone the repository:
 
-git clone [https://github.com/yourusername/BIT_CD_Project.git](https://github.com/yourusername/BIT_CD_Project.git)
+```bash
+git clone https://github.com/yourusername/BIT_CD_Project.git
 cd BIT_CD_Project
+```
 
+Install dependencies:
 
-Install Dependencies:
-
+```bash
 pip install -r requirements.txt
+```
 
+---
 
-📊 Dataset Preparation
+## **Dataset Preparation**
 
-The model requires the LEVIR-CD dataset patched into 256x256 crops.
+This project uses the **LEVIR-CD** dataset with 256×256 patching.
 
-Download the raw LEVIR-CD dataset.
+Steps:
 
-Run the preparation script to crop 1024x1024 images into 256x256 patches:
+1. Download the LEVIR-CD dataset.
+2. Generate patches using:
 
+```bash
 python prepare_data.py
+```
 
+This converts 1024×1024 image tiles into 256×256 training and validation patches.
 
-🚀 Training
+---
 
-To train the model from scratch with GPU acceleration:
+## **Training**
 
+Train the model with:
+
+```bash
 python train.py --epochs 200 --bs 16 --lr 5e-5
+```
 
+Checkpoints and logs will be stored automatically.
 
-🖼️ Inference
+---
 
-To generate visual predictions using the trained model:
+## **Inference**
 
+Run inference on sample image pairs:
+
+```bash
 python predict.py --model_path checkpoints/best_bit.pth --num_samples 20
+```
 
+Output masks will be saved in:
 
-Results are saved in the outputs/ folder.
+```
+outputs_final/
+```
 
-📈 Results
+---
 
-Metric
+## **Results (LEVIR-CD)**
 
-Score
+| Metric    | Score  |
+| --------- | ------ |
+| IoU       | 77.62% |
+| F1-Score  | 87.40% |
+| Precision | 89.10% |
+| Recall    | 85.60% |
 
-IoU (Intersection over Union)
+---
 
-77.62%
+## **Project Structure**
 
-F1-Score
+```
+BIT_CD/
+│── checkpoints/
+│── outputs_final/
+│── src/
+│── train.py
+│── predict.py
+│── prepare_data.py
+│── requirements.txt
+└── README.md
+```
 
-87.40%
+---
 
-Precision
+## **License**
 
-89.1%
-
-Recall
-
-85.6%
-
-📝 License
-
-This project is open-source and available under the MIT License.
+This repository is released under the **MIT License**.
