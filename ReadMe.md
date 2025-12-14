@@ -36,9 +36,6 @@ Our approach uses a hybrid **Siamese Encoder-Bottleneck-Decoder** architecture d
 2.  **Bitemporal Image Transformer (BIT):** A Transformer bottleneck processes high-level features to model long-range spatio-temporal context across the two timepoints.
 3.  **Difference-Aware UNet Decoder:** This is our critical contribution. Instead of standard feature concatenation, we explicitly calculate the **absolute difference** between temporal features ($|F_A - F_B|$) at every decoder level. This mechanism mathematically suppresses features from static objects, forcing the network to focus only on actual changes.
 
-> **[Insert Architecture Diagram Here]**
-> *(Note: Place one of the diagrams we generated previously here, e.g., `architecture_diagram.png`)*
-
 ---
 
 ## 🛠️ Setup and Installation
